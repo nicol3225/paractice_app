@@ -1,0 +1,21 @@
+<h1>CREATE</h1>
+<%= form_with model: @user, url: "/users/create" ,local: true do |form| %>
+    <% if @user.errors %>
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    </br>
+    <p><%= form.label :email, 'ユーザーネーム' %></p>
+    <p><%= form.text_field :username %></p>
+    <p><%= form.label :email, 'メールアドレス' %></p>
+    <p><%= form.text_field :email %></p>
+    <p><%= form.label :password, 'パスワード' %></p>
+    <p><%= form.password_field :password %></p>
+    <p><%= form.file_field :image %></p>
+    <p><%= form.submit "新規登録" %></p>
+
+
+<% end %>

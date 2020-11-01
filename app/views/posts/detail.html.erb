@@ -1,0 +1,75 @@
+    <div class="mypage_post">
+        <div class="post_userimage">    
+            <% if @post.user.image? %>
+                <p><%= image_tag @post.user.image.url, :size =>'50x50'%></p>
+            <% else %>
+                <p><%= image_tag "default_user.jpg", :size =>'50x50'%></p>
+            <% end %>
+            <div class="post_username">    
+                <p><%= link_to "#{@post.user.username}", "/users/#{@post.user_id}" %></p>
+            </div>
+                </br>
+                </br>    
+        </div>  
+        <div class="post_post">    
+            <p><%= link_to "#{@post.content}", "/posts/#{@post.id}" %></p>
+            <% if @post.image? %>
+            <p><%= image_tag @post.image.url, :size =>'100x100'%><li>
+            <% end %>
+        </div>    
+<% if @likes_count_chk != 0 %>
+        <div class="likes_image">
+        <p><%= link_to image_tag("heart1.jpeg", :size =>'20x20') ,"/posts/#{@post.id}/like_delete/detail"%></P>
+        </div>
+        <div class="likes_count">
+        <p><%= @likes_count%></p>
+        </div>
+<% else %>
+        <div class="likes_image">
+        <p><%= link_to image_tag("heart2.jpeg", :size =>'20x20') ,"/posts/#{@post.id}/like/detail"%></P>
+        </div>
+        <div class="likes_count">
+        <p><%= @likes_count%></p>
+        </div>
+<% end %>
+        <div class="reply_image">
+        <p><%= link_to image_tag("reply.jpeg", :size =>'22x22'), "/posts/#{@post.id}/reply_form" %></p>
+        </div>
+        <% if @current_user.id == @post.user_id%>
+        <div class="edit_image">
+        <p><%= link_to image_tag("edit.jpeg", :size =>'22x22'), "/posts/#{@post.id}/edit" %></p>
+        </div>
+        <div class="delete_image">
+        <p><%= link_to image_tag("delete.jpeg", :size =>'22x22'),"/posts/#{@post.id}/delete", data: {confirm: "削除しますか？"} %></p>
+        </div>
+        <% end %>
+
+    </div>
+</br>
+</br>    
+</br>    
+
+<% @replys.each do |reply| %>
+    <div class="mypage_reply">
+        <div class="post_userimage">    
+            <% if reply.user.image? %>
+                <p><%= image_tag reply.user.image.url, :size =>'50x50'%></p>
+            <% else %>
+                <p><%= image_tag "default_user.jpg", :size =>'50x50'%></p>
+            <% end %>
+            <div class="post_username">    
+                <p><%= link_to "#{reply.user.username}", "/users/#{reply.user_id}" %></p>
+            </div>
+                </br>
+                </br>    
+        </div>  
+        <div class="post_post">    
+            <p><%= link_to "#{reply.content}", "/posts/#{reply.id}" %></p>
+            <% if reply.image? %>
+            <p><%= image_tag reply.image.url, :size =>'100x100'%><li>
+            <% end %>
+        </div>    
+    </div>
+</br>
+<% end %>
+

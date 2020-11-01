@@ -1,0 +1,15 @@
+<h1>REPLY</h1>
+
+
+<%= form_with model: @post, url: "/posts/#{params[:id]}/reply" ,local: true do |form| %>
+ <% if @post.errors %>
+<ul>
+<% @post.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+</ul>
+<% end %> 
+<p><%= form.text_field :content %></p>
+<p><%= form.file_field :image %></p>
+<p><%= form.submit "投稿" %></p>
+<% end %>

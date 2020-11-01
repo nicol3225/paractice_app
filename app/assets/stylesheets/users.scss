@@ -1,0 +1,99 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-left {
+    float: left;
+    width: 10%;
+}
+  
+.user-right {
+    width: 90%;
+    padding-left: 25px;
+    text-align: left;
+    display: table-cell;
+    vertical-align: middle;
+}
+  
+
+.mypage_post {
+    text-align: left;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+li {
+    list-style: none;
+  }
+
+
+.mypage_post {
+    width: 300px;
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+}
+.mypage_post .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #95ccff;
+    font-weight: bold;
+}
+    .mypage_post p {
+        margin: 0; 
+        padding: 0;
+    }
+
+    .mypage_reply {
+        width: 300px;
+        position: relative;
+        margin: 2em 0;
+        padding: 0.5em 1em;
+        border: solid 3px yellowgreen;
+        border-radius: 8px;
+        margin-left: 60px;
+    }
+    .mypage_reply .box-title {
+        position: absolute;
+        display: inline-block;
+        top: -13px;
+        left: 10px;
+        padding: 0 9px;
+        line-height: 1;
+        font-size: 19px;
+        background: #FFF;
+        color: #95ccff;
+        font-weight: bold;
+    }
+        .mypage_reply p {
+            margin: 0; 
+            padding: 0;
+        }
+    
+
+.post_userimage p {
+    float: left;
+}
+.post_username{
+    margin-left: 60px; 
+
+}
+
+.post_post p {
+    margin-left: 60px;
+}
+
+.post_userimage img {
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    border: 1px solid gray; /* 枠線を付加 */
+}
+

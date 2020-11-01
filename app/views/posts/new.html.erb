@@ -1,0 +1,18 @@
+<h1>POSTS</h1>
+
+
+<%= form_with model: @post, url: "/posts/create" ,local: true do |form| %>
+<% if @post.errors %>
+<ul>
+<% @post.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+</ul>
+<% end %>
+<p><%= form.label :content, '投稿内容' %></p>
+<p><%= form.text_field :content %></p>
+<p><%= form.file_field :image %></p>
+<p><%= form.submit "投稿" %></p>
+<% end %>
+
+

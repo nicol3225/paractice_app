@@ -1,0 +1,14 @@
+<h1>EDIT</h1>
+
+<%= form_with model: @post, url: "/posts/#{@post.id}/update" ,local: true do |form| %>
+    <% if @post.errors %>
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    <li><%= form.text_field :content %></li>
+    <li><%= form.submit "UPDETE" %></li>
+<% end %>
+

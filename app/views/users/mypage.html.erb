@@ -1,0 +1,79 @@
+<div class=mypage>
+    <div class="mypage_user">
+        <div class="user-left">          
+    
+            <% if @user.image? %>
+                <li><%= image_tag @user.image.url, :size =>'100x100'%></li>
+            <% else %>
+                <li><%= image_tag "default_user.jpg", :size =>'100x100'%></li>
+            <% end %>
+        </div>
+    
+        <div class="user-right">
+            <p><%= @user.username %></p>
+            <% if @current_user.id == @user.id%>
+            <p><%= link_to "EDIT", "/users/#{@user.id}/edit" %></p>
+            <% end %>
+        </div>
+    </div>
+        </br>
+        </br>    
+        </br>    
+
+    <% @mypost.each do |post| %>
+    <% if post.postId == 0 %>
+    <div class="mypage_post">
+        <div class="post_userimage">    
+            <% if @user.image? %>
+                <p><%= image_tag @user.image.url, :size =>'50x50'%></p>
+            <% else %>
+                <p><%= image_tag "default_user.jpg", :size =>'50x50'%></p>
+            <% end %>
+            <div class="post_username">    
+                <p><%= @user.username %><p>
+            </div>    
+        </div>    
+        </br>
+        </br>    
+        <div class="post_post">    
+            <p><%= link_to "#{post.content}", "/posts/#{post.id}" %></p>
+            <% if post.image? %>
+            <p><%= image_tag post.image.url, :size =>'100x100'%></p>
+            <% end %>
+        </div> 
+        <div class="likes_count">
+        <% if @like.like_count(@current_user.id,post.id) != 0 %>
+        <div class="likes_image">
+        <p><%= link_to image_tag("heart1.jpeg", :size =>'20x20') ,"/posts/#{post.id}/like_delete/#{@user.id}"%></P>
+        </div>
+        <div class="likes_count">
+        <p><%= @like.like_num(post.id)%></p>
+        </div>
+        <% else %>
+        <div class="likes_image">
+        <p><%= link_to image_tag("heart2.jpeg", :size =>'20x20') ,"/posts/#{post.id}/like/#{@user.id}"%></P>
+        </div>
+        <div class="likes_count">
+        <p><%= @like.like_num(post.id)%></p>
+        </div>
+        <% end %>
+
+        </div>
+
+        <div class="reply_image">
+        <p><%= link_to image_tag("reply.jpeg", :size =>'22x22'), "/posts/#{post.id}/reply_form" %></p>
+        </div>
+        <% if @current_user.id == post.user_id%>
+        <div class="edit_image">
+        <p><%= link_to image_tag("edit.jpeg", :size =>'22x22'), "/posts/#{post.id}/edit" %></p>
+        </div>
+        <div class="delete_image">
+        <p><%= link_to image_tag("delete.jpeg", :size =>'22x22'),"/posts/#{post.id}/delete", data: {confirm: "削除しますか？"} %></p>
+        </div>
+        <% end %>
+  
+    </div>
+    <% end %>
+        </br>
+    <% end %>
+</div>
